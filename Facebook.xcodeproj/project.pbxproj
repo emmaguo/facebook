@@ -20,6 +20,7 @@
 		429277A4198F391500E19641 /* CreateStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429277A3198F391500E19641 /* CreateStatusViewController.swift */; };
 		429277A6198F392800E19641 /* CreatePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429277A5198F392800E19641 /* CreatePhotoViewController.swift */; };
 		429277A8198F393500E19641 /* CreateCheckinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429277A7198F393500E19641 /* CreateCheckinViewController.swift */; };
+		7E607D761C8CB68F00BA7DA6 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E607D751C8CB68F00BA7DA6 /* PhotoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		429277A3198F391500E19641 /* CreateStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateStatusViewController.swift; sourceTree = "<group>"; };
 		429277A5198F392800E19641 /* CreatePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePhotoViewController.swift; sourceTree = "<group>"; };
 		429277A7198F393500E19641 /* CreateCheckinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCheckinViewController.swift; sourceTree = "<group>"; };
+		7E607D751C8CB68F00BA7DA6 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				42167679198ECE88008CCBC3 /* NewsFeedViewController.swift */,
+				7E607D751C8CB68F00BA7DA6 /* PhotoViewController.swift */,
 				42167677198ECE0E008CCBC3 /* RequestsViewController.swift */,
 				429277A1198F35B600E19641 /* MessagesViewController.swift */,
 				42167675198ECA7C008CCBC3 /* NotificationsViewController.swift */,
@@ -252,6 +255,7 @@
 				42167678198ECE0E008CCBC3 /* RequestsViewController.swift in Sources */,
 				42167673198EAABC008CCBC3 /* SettingsViewController.swift in Sources */,
 				4216767A198ECE88008CCBC3 /* NewsFeedViewController.swift in Sources */,
+				7E607D761C8CB68F00BA7DA6 /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,7 @@ class NewsFeedViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var feedImageView: UIImageView!
+    var tappedImage: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,5 +33,16 @@ class NewsFeedViewController: UIViewController {
         scrollView.contentInset.bottom = 50
         scrollView.scrollIndicatorInsets.top = 0
         scrollView.scrollIndicatorInsets.bottom = 50
+    }
+    
+    @IBAction func didTap(sender: UITapGestureRecognizer) {
+        let tappedImageView = sender.view as! UIImageView
+        tappedImage = tappedImageView.image
+        performSegueWithIdentifier("PhotoSegue", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        let photoViewController = segue.destinationViewController as! PhotoViewController
+        photoViewController.image = tappedImage
     }
 }
