@@ -40,10 +40,27 @@ class ImageTransition: BaseTransition {
     }
     
     override func dismissTransition(containerView: UIView, fromViewController: UIViewController, toViewController: UIViewController) {
-        fromViewController.view.alpha = 1
+        
+        let photoViewController = fromViewController as! PhotoViewController
+        let tabBarViewController = toViewController as! UITabBarController
+        let navigationController = tabBarViewController.selectedViewController as! UINavigationController
+        let newsFeedViewController = navigationController.topViewController as! NewsFeedViewController
+        
+        tempImageView = UIImageView()
+        tempImageView.contentMode = newsFeedViewController.tappedImageView.contentMode
+        tempImageView.bounds = photoViewController.imageView.bounds
+        tempImageView.center = photoViewController.imageView.center
+        tempImageView.image = photoViewController.image
+        containerView.addSubview(tempImageView)
+        photoViewController.imageView.alpha = 0
+        newsFeedViewController.view.alpha = 0
+        
         UIView.animateWithDuration(duration, animations: {
-            fromViewController.view.alpha = 0
+                self.tempImageView.bounds = newsFeedViewController.tappedImageView.bounds
+                self.tempImageView.center = newsFeedViewController.tappedImageView.center
+                newsFeedViewController.view.alpha = 1
             }) { (finished: Bool) -> Void in
+                self.tempImageView.removeFromSuperview()
                 self.finish()
         }
     }

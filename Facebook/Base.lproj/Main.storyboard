@@ -676,7 +676,10 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="actionsButton" destination="ibr-3X-jZR" id="IUe-9V-tkQ"/>
+                        <outlet property="doneButton" destination="3VF-rE-Zct" id="jmR-sm-1w7"/>
                         <outlet property="imageView" destination="nP7-ZF-Pph" id="7co-Ed-b6v"/>
+                        <outlet property="scrollView" destination="oBy-VC-54s" id="o0G-tr-dwr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vWr-Ai-aE4" userLabel="First Responder" sceneMemberID="firstResponder"/>

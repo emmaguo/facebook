@@ -8,9 +8,12 @@
 
 import UIKit
 
-class PhotoViewController: UIViewController {
+class PhotoViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var actionsButton: UIImageView!
+    @IBOutlet weak var doneButton: UIImageView!
     var image: UIImage!
 
     override func viewDidLoad() {
@@ -18,6 +21,8 @@ class PhotoViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         imageView.image = image
+        scrollView.delegate = self
+        scrollView.contentSize = CGSize(width: 320, height: 700)
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,6 +33,38 @@ class PhotoViewController: UIViewController {
     @IBAction func clickDone(sender: UIButton) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        // This method is called as the user scrolls
+        
+        let alpha = 1 - CGFloat(scrollView.contentOffset.y / -120)
+        view.backgroundColor = UIColor(white: 0, alpha: alpha)
+    }
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        UIView.animateWithDuration(0.3) { () -> Void in
+            self.actionsButton.alpha = 0
+            self.doneButton.alpha = 0
+        }
+    }
+    
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        // This method is called right as the user lifts their finger
+            
+        if (scrollView.contentOffset.y < -100) {
+            dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                self.actionsButton.alpha = 1
+                self.doneButton.alpha = 1
+            })
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        // This method is called when the scrollview finally stops scrolling.
+    }
+
 
     /*
     // MARK: - Navigation
