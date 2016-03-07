@@ -78,6 +78,18 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         // This method is called when the scrollview finally stops scrolling.
     }
 
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        actionsButton.alpha = 0
+        doneButton.alpha = 0
+        return imageView
+    }
+
+    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
+        if (scale == 1) {
+            actionsButton.alpha = 1
+            doneButton.alpha = 1
+        }
+    }
 
     /*
     // MARK: - Navigation
