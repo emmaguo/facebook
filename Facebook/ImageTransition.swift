@@ -25,11 +25,13 @@ class ImageTransition: BaseTransition {
         tempImageView.image = newsFeedViewController.tappedImageView.image
         tempImageView.contentMode = newsFeedViewController.tappedImageView.contentMode
         tempImageView.frame = frame
+        tempImageView.alpha = 0
         containerView.addSubview(tempImageView)
         photoViewController.imageView.alpha = 0
         photoViewController.view.alpha = 0
 
         UIView.animateWithDuration(duration, animations: {
+                self.tempImageView.alpha = 1
                 self.tempImageView.frame = photoViewController.imageView.frame
                 photoViewController.view.alpha = 1
             }) { (finished: Bool) -> Void in
@@ -52,11 +54,13 @@ class ImageTransition: BaseTransition {
         tempImageView.image = photoViewController.image
         tempImageView.contentMode = newsFeedViewController.tappedImageView.contentMode
         tempImageView.frame = photoViewController.imageView.frame
+        tempImageView.alpha = 1
         containerView.addSubview(tempImageView)
         photoViewController.view.alpha = 0
 
         UIView.animateWithDuration(duration, animations: {
                 self.tempImageView.frame = endFrame
+                self.tempImageView.alpha = 0
             }) { (finished: Bool) -> Void in
                 self.tempImageView.removeFromSuperview()
                 self.finish()
