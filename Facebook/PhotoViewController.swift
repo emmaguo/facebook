@@ -15,12 +15,25 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var actionsButton: UIImageView!
     @IBOutlet weak var doneButton: UIImageView!
     var image: UIImage!
+    let maxWidth: CGFloat! = 320
+    let maxHeight: CGFloat! = 464
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let originalCenter = imageView.center
         imageView.image = image
+        if (image.size.width > image.size.height) {
+            // Wide picture
+            let height = maxWidth * image.size.height / image.size.width
+            imageView.frame.size = CGSize(width: maxWidth, height: height)
+        } else {
+            // Tall picture
+            let width = maxHeight * image.size.width / image.size.height
+            imageView.frame.size = CGSize(width: width, height: maxHeight)
+        }
+        imageView.center = originalCenter        
         scrollView.delegate = self
         scrollView.contentSize = CGSize(width: 320, height: 700)
     }
