@@ -12,13 +12,16 @@ class NewsFeedViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var feedImageView: UIImageView!
-    var tappedImage: UIImage!
+    var tappedImageView: UIImageView!
+    var imageTransition: ImageTransition!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Configure the content size of the scroll view
         scrollView.contentSize = CGSizeMake(320, feedImageView.image!.size.height)
+        
+        imageTransition = ImageTransition()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,13 +39,14 @@ class NewsFeedViewController: UIViewController {
     }
     
     @IBAction func didTap(sender: UITapGestureRecognizer) {
-        let tappedImageView = sender.view as! UIImageView
-        tappedImage = tappedImageView.image
+        tappedImageView = sender.view as! UIImageView
         performSegueWithIdentifier("PhotoSegue", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         let photoViewController = segue.destinationViewController as! PhotoViewController
-        photoViewController.image = tappedImage
+        photoViewController.image = tappedImageView.image
+        photoViewController.modalPresentationStyle = UIModalPresentationStyle.Custom
+        photoViewController.transitioningDelegate = imageTransition
     }
 }
